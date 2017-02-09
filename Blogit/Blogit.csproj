@@ -182,6 +182,14 @@
     <Compile Include="Migrations\201702092010445_AddedBodyToBlogPost.Designer.cs">
       <DependentUpon>201702092010445_AddedBodyToBlogPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702092106129_AddedRequiredPropertiesOfBlogPost.cs" />
+    <Compile Include="Migrations\201702092106129_AddedRequiredPropertiesOfBlogPost.Designer.cs">
+      <DependentUpon>201702092106129_AddedRequiredPropertiesOfBlogPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702092110060_CastCreatedAsDateTime2.cs" />
+    <Compile Include="Migrations\201702092110060_CastCreatedAsDateTime2.Designer.cs">
+      <DependentUpon>201702092110060_CastCreatedAsDateTime2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogPost.cs" />
@@ -247,6 +255,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BlogPost\Index.cshtml" />
     <Content Include="Views\BlogPost\Create.cshtml" />
+    <Content Include="Views\BlogPost\Edit.cshtml" />
+    <Content Include="Views\BlogPost\Delete.cshtml" />
+    <Content Include="Views\BlogPost\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,6 +276,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702092010445_AddedBodyToBlogPost.resx">
       <DependentUpon>201702092010445_AddedBodyToBlogPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702092106129_AddedRequiredPropertiesOfBlogPost.resx">
+      <DependentUpon>201702092106129_AddedRequiredPropertiesOfBlogPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702092110060_CastCreatedAsDateTime2.resx">
+      <DependentUpon>201702092110060_CastCreatedAsDateTime2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

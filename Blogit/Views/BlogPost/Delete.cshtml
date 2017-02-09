@@ -1,0 +1,48 @@
+﻿@model Blogit.Models.BlogPost
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this blog post?</h3>
+<div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <h4>@Html.DisplayNameFor(model => model.Title)</h4>
+        </div>
+        <div class="col-lg-4">
+            <h4>@Html.DisplayNameFor(model => model.Author)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+        <div class="col-lg-4">
+            @Html.DisplayFor(model => model.Author)
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-2">
+            <h4>Body</h4>
+        </div>
+        <div class="col-lg-10">
+            @Html.DisplayFor(model => model.Body)
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

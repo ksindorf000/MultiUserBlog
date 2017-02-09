@@ -76,16 +76,16 @@ namespace Blogit.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Only allow edits to books that belong to the current user
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
             BlogPost blogPost = db.BlogPosts
-                .Where(b => b.OwnerId == userId)
+            //    .Where(b => b.OwnerId == userId)
                 .Where(b => b.Id == id)
                 .FirstOrDefault();
             if (blogPost == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blogPost.OwnerId);
+            //ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blogPost.OwnerId);
             return View(blogPost);
         }
 
@@ -94,16 +94,16 @@ namespace Blogit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Author,Pages,Genre,OwnerId")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Author,Teaser,Body,Public")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
-                blogPost.OwnerId = User.Identity.GetUserId();
+                //blogPost.OwnerId = User.Identity.GetUserId();
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blogPost.OwnerId);
+            //ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blogPost.OwnerId);
             return View(blogPost);
         }
 

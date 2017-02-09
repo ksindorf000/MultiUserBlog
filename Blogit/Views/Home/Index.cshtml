@@ -25,7 +25,7 @@
 {
     <div class="row">
         <div class="col-lg-3">
-            @post.Title
+            @Html.ActionLink((string)post.Title, "Details", "BlogPost", new { id = post.Id }, null)
         </div>
         <div class="col-lg-3">
             @post.Author
