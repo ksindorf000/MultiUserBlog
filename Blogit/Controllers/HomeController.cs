@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blogit.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,11 @@ namespace Blogit.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
+            ViewBag.PostList = db.BlogPosts.Where(b => b.Public == true).ToList();
             return View();
         }
 

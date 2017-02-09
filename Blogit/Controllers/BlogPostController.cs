@@ -22,7 +22,6 @@ namespace Blogit.Controllers
             //var userId = User.Identity.GetUserId();
             //var blogPost = db.BlogPosts.Include(b => b.Owner).Where(b => b.Owner.Id == userId);            
             //return View(blogPost.ToList());
-
             ViewBag.PostList = db.BlogPosts.OrderBy(p => p.Created).ToList();
             return View();
         }
