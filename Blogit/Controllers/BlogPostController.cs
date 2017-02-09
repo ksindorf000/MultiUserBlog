@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Blogit.Controllers
 {
+    [Authorize]
     public class BlogPostController : Controller
     {
         //Create the context to avoid having to use "using" statements
@@ -19,10 +20,11 @@ namespace Blogit.Controllers
         public ActionResult Index()
         {
             //Get logged in user and only list BlogPosts belonging to that user
-            //var userId = User.Identity.GetUserId();
-            //var blogPost = db.BlogPosts.Include(b => b.Owner).Where(b => b.Owner.Id == userId);            
-            //return View(blogPost.ToList());
-            ViewBag.PostList = db.BlogPosts.OrderBy(p => p.Created).ToList();
+            var userId = User.Identity.GetUserId();
+            var blogPost = db.BlogPosts.Include(b => b.Owner).Where(b => b.Owner.Id == userId);
+            
+            ViewBag.PostList = blogPost.OrderBy(b => b.Created).ToList();
+
             return View();
         }
 

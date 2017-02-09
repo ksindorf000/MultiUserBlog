@@ -13,7 +13,10 @@ namespace Blogit.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.PostList = db.BlogPosts.Where(b => b.Public == true).ToList();
+            ViewBag.PostList = db.BlogPosts
+                .Where(b => b.Public == true)
+                .OrderBy(b => b.Created)
+                .ToList();
             return View();
         }
 
