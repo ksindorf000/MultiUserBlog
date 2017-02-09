@@ -20,6 +20,9 @@ namespace Blogit.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +32,7 @@ namespace Blogit.Models
         {
             return new ApplicationDbContext();
         }
+
+       // public System.Data.Entity.DbSet<Blogit.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

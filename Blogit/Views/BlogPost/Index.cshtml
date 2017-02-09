@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Blogit.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p><div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            @foreach (var blogPost in ViewBag.PostList)
+            {
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        @Html.ActionLink((string)blogPost.Title, "Details", "BlogPost", new { id = blogPost.Id }, null)
+                    </h2>
+                    <h3 class="post-subtitle">
+                        @blogPost.Teaser
+                    </h3>
+                    <p class="post-meta">Posted by @blogPost.Author on @blogPost.Created</p>
+                </div>
+                <hr>
+            }
+        </div>
+    </div>
+</div>
