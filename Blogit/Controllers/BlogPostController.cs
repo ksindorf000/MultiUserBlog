@@ -21,9 +21,11 @@ namespace Blogit.Controllers
         {
             //Get logged in user and only list BlogPosts belonging to that user
             var userId = User.Identity.GetUserId();
-            var blogPost = db.BlogPosts.Include(b => b.Owner).Where(b => b.Owner.Id == userId);
-            
-            ViewBag.PostList = blogPost.OrderBy(b => b.Created).ToList();
+            ViewBag.PostList = db.BlogPosts
+                .Include(b => b.Owner)
+                .Where(b => b.Owner.Id == userId)
+                .OrderBy(b => b.Created)
+                .ToList();
 
             return View();
         }
@@ -35,7 +37,12 @@ namespace Blogit.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            var userId = User.Identity.GetUserId();
+            BlogPost blogPost = db.BlogPosts
+                .Include(b => b.Owner)
+                .Where(b => b.Owner.Id == userId)
+                .FirstOrDefault();
+
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -56,12 +63,14 @@ namespace Blogit.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Author,Teaser,Body,Public")] BlogPost blogPost)
         {
+            blogPost.OwnerId = User.Identity.GetUserId();
+            blogPost.Author = User.Identity.GetUserName();
+            blogPost.Created = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 //The ONLY way to get/pass User Identity
-                //"Grab it from the incoming request."
-                //blogPost.OwnerId = User.Identity.GetUserId();
-                blogPost.Created = DateTime.Now;
+                //"Grab it from the incoming request." 
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,9 +87,8 @@ namespace Blogit.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Only allow edits to books that belong to the current user
-            //var userId = User.Identity.GetUserId();
             BlogPost blogPost = db.BlogPosts
-            //    .Where(b => b.OwnerId == userId)
+                .Where(b => b.OwnerId == User.Identity.GetUserId())
                 .Where(b => b.Id == id)
                 .FirstOrDefault();
             if (blogPost == null)
