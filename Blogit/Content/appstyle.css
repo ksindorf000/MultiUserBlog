@@ -47,7 +47,7 @@ section#blog {
     margin-top: 20px;
 }
 
-.section.coral {
+.section-coral {
     background-color: #f85762;
     color: white;
 }
@@ -82,4 +82,14 @@ section#blog {
 
 .details-body {
     background: #f2f2f2;
+    color: black;
+}
+
+.home-post .entry-content {
+    height: 275px;
+}
+
+.read-more {
+    color: #57b3f8;
+    font-weight: bold;
 }

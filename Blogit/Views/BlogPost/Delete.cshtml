@@ -16,56 +16,62 @@
 
         <div class="blankdivider30">
         </div>
-
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-3">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <h5> @Html.DisplayNameFor(model => model.Title)</h5>
-                    </div>
-                    <div class="col-lg-6">
-                        @Html.DisplayFor(model => model.Title)
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        <h5>
-                            @Html.DisplayNameFor(model => model.Author)
-                        </h5>
-                    </div>
-                    <div class="col-lg-6">
-                        @Html.DisplayFor(model => model.Author)
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        <h5>@Html.DisplayNameFor(model => model.Body)</h5>
-                    </div>
-                    <div class="col-lg-6">
-                        @Html.DisplayFor(model => model.Body)
-                    </div>
-                </div>
-                <div class="cform" id="contact-form">
-                    <div class="row">
-                        <div class="col-lg-12 col-lg-offset-2">
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-                                <div class="form-actions no-color">
-                                    <div class="col-lg-2">
-                                        <input type="submit" value="Delete" class="btn btn-inverse" />
-                                    </div>
-                                    <div class="col-lg-2 col-lg-offset-1">
-                                        <a href="@Url.Action("Index", "BlogPost")">
-                                            <input type="button" value="Cancel" class="btn btn-default" />
-                                        </a>
-                                    </div>
+        
+        <section id="blog">
+            <div class="row">
+                <div class="details-body">
+                    <div class="col-lg-8 col-lg-offset-3">
+                        <div class="row">
+                            <div class="blankdivider30">
+                            </div>
+                            <div class="col-lg-2">
+                                <h5> @Html.DisplayNameFor(model => model.Title)</h5>
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.DisplayFor(model => model.Title)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h5>
+                                    @Html.DisplayNameFor(model => model.Author)
+                                </h5>
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.DisplayFor(model => model.Author)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h5>@Html.DisplayNameFor(model => model.Body)</h5>
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.DisplayFor(model => model.Body)
+                            </div>
+                        </div>
+                        <div class="cform" id="contact-form">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-actions no-color">
+                                            <div class="col-lg-2">
+                                                <input type="submit" value="Delete" class="btn btn-inverse" />
+                                            </div>
+                                            <div class="col-lg-2 col-lg-offset-3">
+                                                <a href="@Url.Action("Index", "BlogPost")">
+                                                    <input type="button" value="Cancel" class="btn btn-default" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
-                            }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </section>

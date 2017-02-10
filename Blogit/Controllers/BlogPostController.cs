@@ -24,7 +24,7 @@ namespace Blogit.Controllers
             ViewBag.PostList = db.BlogPosts
                 .Include(b => b.Owner)
                 .Where(b => b.Owner.Id == userId)
-                .OrderBy(b => b.Created)
+                .OrderByDescending(b => b.Created)
                 .ToList();
             
             return View();
@@ -107,11 +107,15 @@ namespace Blogit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Author,Teaser,Body,Public")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Teaser,Body,Created,Public")] BlogPost blogPost)
         {
+            var userId = User.Identity.GetUserId();
+            var userName = User.Identity.GetUserName();
+
             if (ModelState.IsValid)
             {
-                //blogPost.OwnerId = User.Identity.GetUserId();
+                blogPost.OwnerId = userId;
+                blogPost.Author = userName;
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

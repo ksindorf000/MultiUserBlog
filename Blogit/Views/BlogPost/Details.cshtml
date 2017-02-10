@@ -7,13 +7,9 @@
         <h4 id="Top" class="font-white">@Html.DisplayFor(model => model.Title)</h4>
         <p class="text-center font-white">
             @Html.DisplayFor(model => model.Teaser)<br />
-
+            <div class="post-subtitle">@Html.DisplayFor(model => model.Teaser)</div>
         </p>
         <hr />
-        <sup>
-            Written by @Html.DisplayFor(model => model.Author)
-            on @Html.DisplayFor(model => model.Created)
-        </sup>
 
         @*<div class="blankdivider30">
             </div>*@
@@ -21,12 +17,19 @@
         <section id="blog">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="details-body">
-                        @Html.DisplayFor(model => model.Body)
-                    </p>
-                    <p>
-                        @Html.ActionLink("Back to List", "Index", "Home")
-                    </p>
+                    <div class="home-post">
+                        <div class="entry-content">
+                            <p>
+                                Written by @Html.DisplayFor(model => model.Author)
+                                on @Html.DisplayFor(model => model.Created)
+                            </p>
+                            <hr />
+
+                            <p>
+                                @Html.DisplayFor(model => model.Body)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

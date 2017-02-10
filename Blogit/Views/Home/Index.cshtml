@@ -1,7 +1,7 @@
 ﻿<!--------HOME:INDEX---------->
 
 
-<section id="contact" class="section coral">
+<section id="contact" class="section section-coral">
     <div class="container">
         <h4 class="font-white">Welcome to Blogit!</h4>
         <p class="font-white text-center">
@@ -15,18 +15,20 @@
                     @foreach (var post in ViewBag.PostList)
                     {
                         <div class="col-md-4">
-                            <div class="home-post">                                    
+                            <div class="home-post">
                                 <div class="entry-content">
                                     <h5><strong>@post.Title</strong></h5>
-                                    <hr/>
+                                    <hr />
                                     <p>
-                                        Written by @post.Author <br/>                                         
-                                        on <span class="date">@post.Created.ToString("dd MMM yyyy")</span>
+                                        <sup>
+                                            Written by @post.Author
+                                            on <span class="date">@post.Created.ToString("dd MMM yyyy")</span>
+                                        </sup>
                                     </p>
                                     <p>
                                         @post.Teaser &hellip;
                                     </p>
-                                    @Html.ActionLink("Read More", "Details", "BlogPost", new { id = post.Id }, null)
+                                   @Html.ActionLink("Read More", "Details", "BlogPost", new { id = post.Id }, new { @class = "read-more" })
                                 </div>
                             </div>
                         </div>

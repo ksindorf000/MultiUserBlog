@@ -15,7 +15,7 @@ namespace Blogit.Controllers
         {
             ViewBag.PostList = db.BlogPosts
                 .Where(b => b.Public == true)
-                .OrderBy(b => b.Created)
+                .OrderByDescending(b => b.Created)
                 .ToList();
             return View();
         }
