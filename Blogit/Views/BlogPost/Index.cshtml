@@ -1,31 +1,37 @@
-﻿@model IEnumerable<Blogit.Models.BlogPost>
+﻿
 
-@{
-    ViewBag.Title = "Index";
-}
+<!--------BLOGPOST:INDEX---------->
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p><div class="container">
-    <div class="row">
+<section id="contact" class="section coral">
+    <div class="container">
+        <h4 class="font-white">Posts from @User.Identity.Name</h4>
 
-        @foreach (var blogPost in ViewBag.PostList)
-            {
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <h2 class="post-title">
-                        @Html.ActionLink((string)blogPost.Title, "Details", "BlogPost", new { id = blogPost.Id }, null)
-                    </h2>
-                    <h3 class="post-subtitle">
-                        @blogPost.Teaser
-                    </h3>
-                    <p class="post-meta">Posted by @blogPost.Author on @blogPost.Created</p>
-                </div>
+        <div class="blankdivider30">
+        </div>
+        <section id="blog" class="section">
+            <div class="container">
+                @foreach (var post in ViewBag.PostList)
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="home-post">
+                                <div class="post-image">
+                                    <img class="max-img" src="http://placehold.it/795x300" alt="" />
+                                </div>                    
+                                <div class="entry-content">
+                                    <h5><strong>@post.Title | <span class="date">@post.Created</span></strong></h5>
+                                    <div class="post-subtitle">@post.Teaser</div>
+                                    <p>
+                                        @post.Body
+                                    </p>
+                                    @Html.ActionLink("Edit", "Edit", "BlogPost", new { id = post.Id }, null)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-
-                <hr>
-        }
+        </section>
     </div>
-</div>
+</section>

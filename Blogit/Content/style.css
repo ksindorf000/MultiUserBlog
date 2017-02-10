@@ -804,9 +804,9 @@ section#blog {
 	float:left;
 	margin-right:20px;
 }
-.home-post .post-meta span {
+/*.home-post .post-meta span {
 	margin-top:10px;
-}
+}*/
 .home-post .post-meta span.date {
 	font-weight:700;
 	font-size:13px;

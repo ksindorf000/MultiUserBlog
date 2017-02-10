@@ -15,7 +15,8 @@
 }
 
 .intro-header {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url(http://kingfisher.scene7.com/is/image/Kingfisher/BBSS15_Neutrals_Office_Main);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), 
+        url(http://kingfisher.scene7.com/is/image/Kingfisher/BBSS15_Neutrals_Office_Main);
 }
 
 .subheading {
@@ -65,4 +66,8 @@ section#blog {
     text-align: left;
     vertical-align: middle;
     height: 156px;
+}
+
+.home-post {
+    margin-top: 20px;
 }
