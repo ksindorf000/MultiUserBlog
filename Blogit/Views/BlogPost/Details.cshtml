@@ -1,42 +1,31 @@
-﻿@model Blogit.Models.BlogPost
+﻿<!----------BLOGPOST: Details--------->
 
-@{
-    ViewBag.Title = "Details";
-}
+@model Blogit.Models.BlogPost
 
-<h2>Details</h2>
-<div class="row">
-    <div class="col-lg-3">
-        <h4>Title</h4>
-    </div>
-    <div class="col-lg-3">
-        <h4>Author</h4>
-    </div>
-    <div class="col-lg-3">
-        <h4>Body</h4>
-    </div>
-    <div class="col-lg-3">
-        <h4>Created</h4>
-    </div>
-</div>
+<section id="contact" class="section section-blue">
+    <div class="container">
+        <h4 id="Top">@Html.DisplayFor(model => model.Title)</h4>
+        <p class="text-center">
+            Written by @Html.DisplayFor(model => model.Author)
+            on @Html.DisplayFor(model => model.Created)
+        </p>
+        <hr />
 
-<div class="row">
-    <div class="col-lg-3">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-    <div class="col-lg-3">
-        @Html.DisplayFor(model => model.Author)
-    </div>
-    <div class="col-lg-3">
-        @Html.DisplayFor(model => model.Body)
-    </div>
-    <div class="col-lg-3">
-        @Html.DisplayFor(model => model.Created)
-    </div>
-</div>
+        <div class="blankdivider30">
+        </div>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })|
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-2">
+                <p>
+                    @Html.DisplayFor(model => model.Body)
+                </p>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })|
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+

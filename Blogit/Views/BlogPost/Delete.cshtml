@@ -1,48 +1,71 @@
-﻿@model Blogit.Models.BlogPost
+﻿<!-----------BLOGPOST: Delete------------->
 
-@{
-    ViewBag.Title = "Delete";
-}
+@model Blogit.Models.BlogPost
 
-<h2>Delete</h2>
+<section id="contact" class="section section-blue">
+    <div class="container">
+        <h4 class="font-white">
+            Are you sure you want
+            <br />
+            to delete this blog post?
+        </h4>
+        <p class="text-center font-white">
+            Once you delete this post, it cannot be recovered!
+        </p>
+        <hr />
 
-<h3>Are you sure you want to delete this blog post?</h3>
-<div>
-
-    <div class="row">
-        <div class="col-lg-4">
-            <h4>@Html.DisplayNameFor(model => model.Title)</h4>
+        <div class="blankdivider30">
         </div>
-        <div class="col-lg-4">
-            <h4>@Html.DisplayNameFor(model => model.Author)</h4>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-3">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h5> @Html.DisplayNameFor(model => model.Title)</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.Author)
+                        </h5>
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.DisplayFor(model => model.Author)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h5>@Html.DisplayNameFor(model => model.Body)</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.DisplayFor(model => model.Body)
+                    </div>
+                </div>
+                <div class="cform" id="contact-form">
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-offset-2">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-actions no-color">
+                                    <div class="col-lg-2">
+                                        <input type="submit" value="Delete" class="btn btn-inverse" />
+                                    </div>
+                                    <div class="col-lg-2 col-lg-offset-1">
+                                        <a href="@Url.Action("Index", "BlogPost")">
+                                            <input type="button" value="Cancel" class="btn btn-default" />
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4">
-            @Html.DisplayFor(model => model.Title)
-        </div>
-        <div class="col-lg-4">
-            @Html.DisplayFor(model => model.Author)
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-lg-2">
-            <h4>Body</h4>
-        </div>
-        <div class="col-lg-10">
-            @Html.DisplayFor(model => model.Body)
-        </div>
-    </div>
-
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+</section>

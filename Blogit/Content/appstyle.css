@@ -2,10 +2,14 @@
     color: black;
 }
 
-
 .post-subtitle {
     color: #57b3f8;
     font-weight: 800;
+}
+
+.post-image {
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .form-control {
@@ -39,7 +43,7 @@ section#blog {
     background: #f2f2f2;
     width: 75%;
     max-height: 25%;
-    margin-left: 10%;
+    margin-left: 12%;
     padding: 15px;
     margin-top: 20px;
 }
@@ -52,6 +56,10 @@ section#blog {
 .section-blue {
     background-color: #57b3f8;
     color: white;
+}
+
+.section-orange {
+    background-color: #f89d57;
 }
 
 .font-white {
@@ -70,4 +78,8 @@ section#blog {
 
 .home-post {
     margin-top: 20px;
+}
+
+.detail-body {
+    background-color: whitesmoke;
 }

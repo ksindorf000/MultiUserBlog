@@ -53,6 +53,8 @@ namespace Blogit.Controllers
         // GET: Book/Create
         public ActionResult Create()
         {
+            ViewBag.userId = User.Identity.GetUserId();
+            ViewBag.userName = User.Identity.GetUserName();
             return View();
         }
 
@@ -63,8 +65,11 @@ namespace Blogit.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Author,Teaser,Body,Public")] BlogPost blogPost)
         {
-            blogPost.OwnerId = User.Identity.GetUserId();
-            blogPost.Author = User.Identity.GetUserName();
+            var userId = User.Identity.GetUserId();
+            var userName = User.Identity.GetUserName();
+
+            blogPost.OwnerId = userId;
+            blogPost.Author = userName;
             blogPost.Created = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -87,8 +92,10 @@ namespace Blogit.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Only allow edits to books that belong to the current user
+            var userId = User.Identity.GetUserId();
+
             BlogPost blogPost = db.BlogPosts
-                .Where(b => b.OwnerId == User.Identity.GetUserId())
+                .Where(b => b.OwnerId == userId)
                 .Where(b => b.Id == id)
                 .FirstOrDefault();
             if (blogPost == null)
