@@ -1,40 +1,38 @@
-﻿@model IEnumerable<Blogit.Models.BlogPost>
+﻿<section id="contact" class="section coral">
+    <div class="container">
+        <h4 class="font-white">Welcome to Blogit!</h4>
+        <p class="font-white text-center">
+            Check out some of the public blogs posted by our members!
+        </p>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        <div class="blankdivider30">
+        </div><section id="blog" class="section">
+            <div class="container">
+                <div class="row">
+                    @foreach (var post in ViewBag.PostList)
+                    {
+                        <div class="col-lg-4">
+                            <div class="home-post">
+                                <div class="post-image">
+                                    <img class="max-img" src="img/blog/img1.jpg" alt="" />
+                                </div>
+                                <div class="post-meta">
+                                    <i class="icon-file icon-2x"></i>
+                                    <span class="date">@post.Created</span>
+                                </div>
+                                <div class="entry-content">
+                                    <h5><strong>@post.Title</strong></h5>
+                                    <p>
+                                        @post.Teaser &hellip;
+                                    </p>
+                                    @Html.ActionLink("Read More", "Deatils", "BlogPost", new { id = post.Id }, null)
+                                </div>
+                            </div>
+                        </div>
 
-<div class="row">
-    <div class="col-lg-3">
-        <h4>Title</h4>
+                    }
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="col-lg-3">
-        <h4>Author</h4>
-    </div>
-    <div class="col-lg-3">
-        <h4>Teaser</h4>
-    </div>
-    <div class="col-lg-3">
-        <h4>Created</h4>
-    </div>
-</div>
-
-@foreach (var post in ViewBag.PostList)
-{
-    <div class="row">
-        <div class="col-lg-3">
-            @Html.ActionLink((string)post.Title, "Details", "BlogPost", new { id = post.Id }, null)
-        </div>
-        <div class="col-lg-3">
-            @post.Author
-        </div>
-        <div class="col-lg-3">
-            @post.Teaser
-        </div>
-        <div class="col-lg-3">
-            @post.Created
-        </div>
-    </div>
-}
+</section>

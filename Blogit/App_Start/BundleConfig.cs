@@ -25,7 +25,11 @@ namespace Blogit
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/clean-blog.css",
+                      "~/Content/clean-blog.min.css",
+                      "~/Content/appstyle.css",
+                      "~/Content/style.css",
+                      "~/Content/font-awesome.min.css"));
         }
     }
 }

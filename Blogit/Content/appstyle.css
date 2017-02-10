@@ -1,0 +1,68 @@
+﻿p {
+    color: black;
+}
+
+
+.post-subtitle {
+    color: #57b3f8;
+    font-weight: 800;
+}
+
+.form-control {
+    width: 60%;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .65);
+}
+
+.intro-header {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url(http://kingfisher.scene7.com/is/image/Kingfisher/BBSS15_Neutrals_Office_Main);
+}
+
+.subheading {
+    font-weight: 500;
+    color: #0085A1;
+    /*text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);*/
+}
+
+.hr-med {
+    width: 50%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+.hr-foot {
+    margin-top: 50px;
+}
+
+section#blog {
+    background: #f2f2f2;
+    width: 75%;
+    max-height: 25%;
+    margin-left: 10%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.section.coral {
+    background-color: #f85762;
+    color: white;
+}
+
+.section-blue {
+    background-color: #57b3f8;
+    color: white;
+}
+
+.font-white {
+    color: white;
+}
+
+.login-input {
+    background: rgba(227, 231, 228, 1);
+    font-family: 'Open Sans', sans serif;
+    border: 0;
+    font-size: 16px;
+    text-align: left;
+    vertical-align: middle;
+    height: 156px;
+}

@@ -10,9 +10,10 @@
     @Html.ActionLink("Create New", "Create")
 </p><div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            @foreach (var blogPost in ViewBag.PostList)
+
+        @foreach (var blogPost in ViewBag.PostList)
             {
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
                     <h2 class="post-title">
                         @Html.ActionLink((string)blogPost.Title, "Details", "BlogPost", new { id = blogPost.Id }, null)
@@ -22,8 +23,9 @@
                     </h3>
                     <p class="post-meta">Posted by @blogPost.Author on @blogPost.Created</p>
                 </div>
+            </div>
+
                 <hr>
-            }
-        </div>
+        }
     </div>
 </div>
