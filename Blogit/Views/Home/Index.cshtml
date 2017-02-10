@@ -14,17 +14,15 @@
                 <div class="row">
                     @foreach (var post in ViewBag.PostList)
                     {
-                        <div class="col-lg-4">
-                            <div class="home-post">
-                                <div class="post-image">
-                                    <img class="max-img" src="img/blog/img1.jpg" alt="" />
-                                </div>
-                                <div class="post-meta">
-                                    <i class="icon-file icon-2x"></i>
-                                    <span class="date">@post.Created</span>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="home-post">                                    
                                 <div class="entry-content">
                                     <h5><strong>@post.Title</strong></h5>
+                                    <hr/>
+                                    <p>
+                                        Written by @post.Author <br/>                                         
+                                        on <span class="date">@post.Created.ToString("dd MMM yyyy")</span>
+                                    </p>
                                     <p>
                                         @post.Teaser &hellip;
                                     </p>

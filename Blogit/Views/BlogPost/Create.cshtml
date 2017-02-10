@@ -5,7 +5,6 @@
 }
 
 
-
 <section id="contact" class="section section-blue">
     <div class="container">
         <h4 id="Top">Write New Post</h4>
@@ -28,25 +27,18 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @maxlength = 50 } })
                                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
-                            <!--Author-->
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @Value = ViewBag.userName } })
-                                    @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
+
 
                             <!--Teaser-->
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Teaser, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Teaser, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Teaser, new { htmlAttributes = new { @class = "form-control", @maxlength = 50 } })
                                     @Html.ValidationMessageFor(model => model.Teaser, "", new { @class = "text-danger" })
                                 </div>
                             </div>

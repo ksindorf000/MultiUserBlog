@@ -12,7 +12,7 @@ namespace Blogit.Models
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
-        [Required]
+        // [Required]
         public string Author { get; set; }
         [Required]
         public string Teaser { get; set; }

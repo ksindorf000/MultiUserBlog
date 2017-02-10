@@ -26,21 +26,20 @@ namespace Blogit.Controllers
                 .Where(b => b.Owner.Id == userId)
                 .OrderBy(b => b.Created)
                 .ToList();
-
+            
             return View();
         }
 
-        // GET: Book/Details/5
+        // GET: Blog/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userId = User.Identity.GetUserId();
+
             BlogPost blogPost = db.BlogPosts
-                .Include(b => b.Owner)
-                .Where(b => b.Owner.Id == userId)
+                .Where(b => b.Id == id)
                 .FirstOrDefault();
 
             if (blogPost == null)
@@ -50,7 +49,7 @@ namespace Blogit.Controllers
             return View(blogPost);
         }
 
-        // GET: Book/Create
+        // GET: Blog/Create
         public ActionResult Create()
         {
             ViewBag.userId = User.Identity.GetUserId();
@@ -58,24 +57,21 @@ namespace Blogit.Controllers
             return View();
         }
 
-        // POST: Book/Create
+        // POST: Blog/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Author,Teaser,Body,Public")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,Title,Teaser,Body,Public")] BlogPost blogPost)
         {
             var userId = User.Identity.GetUserId();
             var userName = User.Identity.GetUserName();
-
-            blogPost.OwnerId = userId;
-            blogPost.Author = userName;
-            blogPost.Created = DateTime.Now;
-
+                        
             if (ModelState.IsValid)
             {
-                //The ONLY way to get/pass User Identity
-                //"Grab it from the incoming request." 
+                blogPost.OwnerId = userId;
+                blogPost.Author = userName;
+                blogPost.Created = DateTime.Now;
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,7 +80,7 @@ namespace Blogit.Controllers
             return View(blogPost);
         }
 
-        // GET: Book/Edit/5
+        // GET: Blog/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -106,7 +102,7 @@ namespace Blogit.Controllers
             return View(blogPost);
         }
 
-        // POST: Book/Edit/5
+        // POST: Blog/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -124,7 +120,7 @@ namespace Blogit.Controllers
             return View(blogPost);
         }
 
-        // GET: Book/Delete/5
+        // GET: Blog/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -139,7 +135,7 @@ namespace Blogit.Controllers
             return View(blogPost);
         }
 
-        // POST: Book/Delete/5
+        // POST: Blog/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201702092110060_CastCreatedAsDateTime2.Designer.cs">
       <DependentUpon>201702092110060_CastCreatedAsDateTime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702101857296_SetAuthorToNotRequired.cs" />
+    <Compile Include="Migrations\201702101857296_SetAuthorToNotRequired.Designer.cs">
+      <DependentUpon>201702101857296_SetAuthorToNotRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogPost.cs" />
@@ -304,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702092110060_CastCreatedAsDateTime2.resx">
       <DependentUpon>201702092110060_CastCreatedAsDateTime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101857296_SetAuthorToNotRequired.resx">
+      <DependentUpon>201702101857296_SetAuthorToNotRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
